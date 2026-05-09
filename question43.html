@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <title>Artist Track Lookup</title>
+</head>
+<body class="container">
+    <div class="card">
+        <h2>Artist Track Lookup</h2>
+            <input type="number" id="artistId" class="form-control" placeholder="Enter Artist ID)">
+            <button class="btn btn-primary" onclick="searchTracks()">Search Tracks</button>
+        </div>
+
+        <div id="results">
+            <table id="tracksTable">
+                <thead>
+                    <tr>
+                        <th>Track Name</th>
+                        <th>Album Title</th>
+                        <th>Duration (ms)</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+<script>
+const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
+const app = express();
+app.use(express.json());
+app.use(express.static('public'));
+
+const db = new sqlite3.Database('./chinook.db');
+
+app.get('/artists/:id/tracks', (req, res) => {
+    const artistId = req.params.id;
+    const sql = `
+        SELECT Track.Name AS trackName, Album.Title AS albumTitle, Track.Milliseconds
+        FROM Track
+        JOIN Album ON Track.AlbumId = Album.AlbumId
+        JOIN Artist ON Album.ArtistId = Artist.ArtistId
+        WHERE Artist.ArtistId = ?`;
+});
+
+app.post('/artists', (req, res) => {
+    const { name } = req.body;
+
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+        return res.status(400).json({ error: "Artist name must be string." });
+    }
+
+    res.status(201).json({
+            ArtistId: this.lastID,
+            Name: name
+            });
+});
+</script>

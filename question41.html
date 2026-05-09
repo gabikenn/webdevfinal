@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>question 41</title>
+</head>
+<body>
+    <fieldset>
+    <form id="myForm" action="https://green-crane-76.webhook.cool" method="POST">
+        <fieldset>
+            <label for="fname">Name:</label>
+            <input type="text" id="fname" name="fname" required><br>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>Choose a Type:</legend>
+        <input type="radio" id="water" name="type" value="water">
+        <label for="water">Water</label><br>
+        <input type="radio" id="fire" name="type" value="fire">
+        <label for="fire">Fire</label><br>
+        <input type="radio" id="rock" name="type" value="rock">
+        <label for="rock">Rock</label>
+        </fieldset>
+        <br>
+
+    <fieldset>
+        <legend>Attack Points:</legend>
+        <label for="points">Points:</label>
+        <input type="number" min="1">
+        </fieldset>
+        <br>
+
+    <button type="submit" form="myForm" value="Submit">Submit</button>
+    </form>
+    </fieldset>
+</body>
+</html>
